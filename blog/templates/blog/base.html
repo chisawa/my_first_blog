@@ -1,14 +1,21 @@
+<!-- 静的ファイル読み込み -->
 {% load static %}
 <html>
     <head>
         <title>djangogirls blog</title>
         <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
         <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-.min.css">
+        <!-- bootstrap(link貼り付けるだけで使える,他にgoogle phonto)で大まかに装飾 -->
         <link href="//fonts.googleapis.com/css?family=Lobster&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+        <!-- 細かいところは自分のcss -->
         <link rel="stylesheet" href="{% static 'css/blog.css' %}">
     </head>
     <body>
         <div class="page-header">
+            <!-- ページをリクエストしているユーザーがログインしている場合のみ -->
+            {% if user.is_authenticated %}
+                <a href="{% url 'post_new' %}" class="top-menu"><span class="glyphicon glyphicon-plus"></span></a>
+            {% endif %}
             <h1><a href="/">djangogirls blog</a></h1>
         </div>
 

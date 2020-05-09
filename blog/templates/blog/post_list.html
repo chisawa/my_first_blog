@@ -1,3 +1,6 @@
+<!-- アプリケーション毎のtemplate -->
+<!-- {%}はdjangoでの.html内でのpythonの書き方 -->
+
 {% extends 'blog/base.html' %}
 
 {% block content %}
@@ -6,6 +9,7 @@
             <div class="date">
                 <p>published: {{post.published_date }}</p>
             </div>
+            <!-- post_detailのurl,データベース上のprimary key -->
             <h2><a href="{% url 'post_detail' pk=post.pk %}">{{post.title}}</a></h2>
             <p>{{ post.text|linebreaksbr }}</p>
         </div>
